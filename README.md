@@ -322,5 +322,8 @@ Two programs release high-resolution multispectral imagery for major disasters. 
 ## Appendix: AlphaEarth slides
 
 - [AlphaEarth slides (Google Slides)](https://docs.google.com/presentation/d/1SOoPxez884xFi6vNH6tienumAsxPlwltdWYdiuRAiw0/edit?slide=id.g364016eefd3_0_5233#slide=id.g364016eefd3_0_5233)
+- [AlphaEarth Foundations paper](https://arxiv.org/abs/2507.22291) (arXiv:2507.22291): "AlphaEarth Foundations: An embedding field model for accurate and efficient global mapping from sparse label data." I found no journal version, so the arXiv preprint is the published record.
+- [Embedding similarity search app](https://earthengine-ai.projects.earthengine.app/view/embedding-similarity-search#year=2025;zoom=13;lon=73.24504611835016;lat=19.206247673935145;clicked=true;): an Earth Engine app. Click a location on the map to find places with similar embeddings.
+- [Satellite Embedding V1 in the Earth Engine Data Catalog](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL): the annual embedding dataset.
 
-AlphaEarth Foundations is Google DeepMind's satellite embedding model. Earth Engine hosts its annual embeddings as a dataset, so you can use them like any other image collection. For background, the paper, and a demo app, see [Part 3](#part-3-embeddings-and-alphaearth).
+AlphaEarth Foundations is Google DeepMind's satellite embedding model. Earth Engine hosts its annual embeddings as a dataset, so you can use them like any other image collection. For more background, see [Part 3](#part-3-embeddings-and-alphaearth).
