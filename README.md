@@ -198,7 +198,14 @@ The notebook needs an API key from your Planet account page: https://www.planet.
 
 Pick one way to store it:
 
-- **Google Colab Secrets:** store the key as `PL_API_KEY` and turn on notebook access.
+- **Google Colab Secrets (recommended in Colab):**
+  1. Click the key icon (**Secrets**) in the left sidebar of Colab.
+  2. Click **+ Add new secret**.
+  3. Set the name to `PL_API_KEY` and paste your key as the value.
+  4. Turn on **Notebook access** for that secret. It is off by default.
+  5. Run the Option A cell in the notebook. Click **Grant access** if Colab asks.
+
+  Notebook access is set for each notebook, so turn it on again in any copy. The notebook has a table of common errors and fixes.
 - **Environment variable on your computer:** see [Store an API key in Python](docs/API_key_in_python.md) for Mac, Windows, and Conda steps.
 
 Do not commit or share a notebook that shows your key. Clear all outputs first, and reset your key on Planet.com if it is exposed.
