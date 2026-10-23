@@ -149,7 +149,7 @@ Once you have explored a Code Editor sample, continue with the [Python notebook 
 1. Open the notebook with the Colab link below.
 2. Run the first code cell to install libraries.
 3. Authenticate Earth Engine in the browser when prompted.
-4. Replace `YOUR_PROJECT_ID` in the notebook with the ID of the project you created above.
+4. When the notebook asks, paste the ID of the project you created above. Or replace `YOUR_PROJECT_ID` in the notebook with your ID to skip the prompt.
 
 **Local Jupyter**
 
@@ -161,6 +161,8 @@ Once you have explored a Code Editor sample, continue with the [Python notebook 
 ### Notebook: Largest active fire today
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mapninja/The_101s_GEE_Planet/blob/main/notebooks/01_largest_fire_today_workflow.ipynb)
+
+**[⬇ Download lakelagunita.geojson](https://github.com/mapninja/The_101s_GEE_Planet/raw/main/notebooks/lakelagunita.geojson)** (Lake Lagunita area of interest). If the file opens as text in your browser, right-click the link and choose **Save link as**. Then drag it into the Colab Files panel.
 
 File: [`notebooks/01_largest_fire_today_workflow.ipynb`](notebooks/01_largest_fire_today_workflow.ipynb)
 
@@ -257,7 +259,7 @@ The_101s_GEE_Planet/
 
 ## Notes
 
-- Earth Engine notebook: set `project` to your own Google Cloud Project ID before you run it.
+- Earth Engine notebook: paste your own Google Cloud Project ID when prompted, or set `project` in the setup cell to skip the prompt.
 - PlanetScope data requires a Planet account with data access. PlanetScope has no SWIR bands, so true NBR needs Sentinel-2 or Landsat.
 - Notebooks in this repo are saved with outputs cleared.
 - Output files: in Colab, both notebooks mount your Google Drive and save files to a `GEE101` folder (`/content/drive/MyDrive/GEE101`), which they create if needed. Colab asks you to allow Drive access. In local Jupyter, files go to an `output` folder next to the notebook.
