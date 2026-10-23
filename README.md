@@ -54,12 +54,6 @@ Google Earth Engine (GEE) is a cloud-based platform for analyzing satellite imag
 
 No prior experience with Earth Engine or JavaScript is required. Familiarity with programming, remote sensing, or GIS helps but is not required.
 
-### Sample scripts (Code Editor)
-
-After you have an Earth Engine account, this link imports a set of commented scripts into the Code Editor:
-
-https://code.earthengine.google.com/?accept_repo=users/stacemaples/SGC-EE101
-
 ### Set up a Google Cloud Project for Earth Engine
 
 Earth Engine requires a registered Google Cloud Project. Follow these steps once. Stanford users who are attending a workshop should already be in the Stanford GEE Access Workgroup.
@@ -129,9 +123,25 @@ Registering as non-commercial gives you access to the Earth Engine API and compu
    ![Select your project](images/20260220_113402_image.png)
 3. Test the setup by running a script. If you do not have one, use this: https://code.earthengine.google.com/f983a2d843739e23ffb77f336ad6d4fb
 
+### Explore sample scripts in the Code Editor
+
+After your Google Cloud Project is set up and selected, explore the commented sample scripts in the Earth Engine Code Editor. If you have an Earth Engine account, open this link to import the scripts:
+
+https://code.earthengine.google.com/?accept_repo=users/stacemaples/SGC-EE101
+
+Use a sample to get familiar with the Code Editor window:
+
+1. In the **Scripts** panel on the left, expand the imported repository and open a sample script.
+2. Read the comments and notice how the script is organized in the code editor in the center.
+3. Click **Run** above the editor to execute the script with your selected Cloud Project.
+4. Look at the **Console** tab on the right for printed results or messages. If the script creates a map, view it in the map panel below the editor; use the **Inspector** tab to explore map features.
+5. Try another sample, or change a small part of the code and run it again to see how the result changes.
+
+These samples use the Code Editor's JavaScript API. The Python notebook below is a separate workflow.
+
 ### Switch to the Python API
 
-The notebooks run in Google Colab or local Jupyter.
+Once you have explored a Code Editor sample, continue with the [Python notebook below](#notebook-largest-active-fire-today). The notebook uses Python and runs in Google Colab or local Jupyter; it is separate from the Code Editor.
 
 **Google Colab**
 
