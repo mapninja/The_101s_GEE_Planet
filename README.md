@@ -342,6 +342,7 @@ Earth Engine can serve any image as XYZ map tiles. Each tile is a 256 by 256 pix
 - At `z=0` one tile covers the whole world. Each zoom level splits every tile into four, so zoom `z` has 4^z tiles.
 - Tile `0/0/0` is the whole world in one image.
 - Overview: [Understanding map zoom levels and XYZ tile coordinates](https://dev.to/geoapify-maps-api/understanding-map-zoom-levels-and-xyz-tile-coordinates-55da).
+- Python package for Web Mercator tiles: [mercantile](https://mercantile.readthedocs.io/) ([source on GitHub](https://github.com/mapbox/mercantile)). It converts longitude and latitude to tile `x`, `y`, `z` numbers and lists the tiles that cover a bounding box. The Python example below uses it.
 
 Ground size of one pixel at the equator (multiply by the cosine of the latitude for other places):
 
