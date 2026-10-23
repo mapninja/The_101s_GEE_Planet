@@ -34,6 +34,7 @@ Stanford users can also request Earth Engine help at stanford-geospatial@stanfor
 4. [Part 3: Embeddings and AlphaEarth](#part-3-embeddings-and-alphaearth)
 5. [More resources](#more-resources)
 6. [Repo contents](#repo-contents)
+7. [Appendix: Stanford Cleantech Hackathon](#appendix-stanford-cleantech-hackathon)
 
 ## Slides
 
@@ -247,3 +248,36 @@ The_101s_GEE_Planet/
 - Earth Engine notebook: set `project` to your own Google Cloud Project ID before you run it.
 - PlanetScope data requires a Planet account with data access. PlanetScope has no SWIR bands, so true NBR needs Sentinel-2 or Landsat.
 - Notebooks in this repo are saved with outputs cleared.
+
+## Appendix: Stanford Cleantech Hackathon
+
+This workshop runs as the Google Earth Engine 101 session at the third annual Stanford Cleantech Hackathon, part of Stanford Climate Week.
+
+- **When:** Friday, October 23, 2026, 5:00 to 6:00 p.m. The hackathon runs October 23 to 24.
+- **Where:** Mackenzie Room (top floor), Jen-Hsun Huang Engineering Center.
+
+### Event links
+
+- [Hackathon guide (Google Doc)](https://docs.google.com/document/d/15fvWlnVcsQuWeAVbtuQhzrvSHii8ef_fXmh3DPh2FWo/edit?tab=t.0)
+- [Hackathon website](https://stanfordcleantechhackathon.com/)
+- [Devpost: submit your project by 5 p.m. Saturday](https://stanford-cleantech-hackathon.devpost.com/)
+- [Judging criteria](https://docs.google.com/document/d/163qTn8TgOZwRGS02T9tu9vSZ8zTEXGyrqvSrJ0enSc8/edit?tab=t.0)
+- [Project challenges and ideas](https://docs.google.com/document/d/1S0Gf53WAzhJuWFr0-btQwcp1esXx82fkO_XfshvrrfM/edit?tab=t.0)
+
+### Data sources for hackathon projects
+
+- **Planet, Stanford affiliates:** [sign-up form](https://forms.gle/oTMeMi4zTqcD4U9n8). Daily, 4 m, multispectral imagery. Non-Stanford EDU users apply at the [Planet education and research page](https://www.planet.com/industries/education-and-research/).
+- **Earth Engine Data Catalog:** https://developers.google.com/earth-engine/datasets/
+- **AirNow API:** air quality data. [AirNow](https://www.airnow.gov/) and [API docs](https://docs.airnowapi.org/).
+- **Natural Capital Project Data Hub:** https://data.naturalcapitalproject.stanford.edu/
+- **Global Forest Watch:** https://www.globalforestwatch.org/
+- **Climate Tech Atlas:** https://climatetechatlas.com/
+
+### Tracks where this workshop applies
+
+Satellite and climate data fit these track prompts:
+
+- **Climate and Health:** AI route planning for dengue surveillance, which starts from predicted mosquito breeding sites. Heat action plan audit.
+- **Resilient Systems:** predictive power outage and reliability mapping, which combines outage records, weather, and infrastructure data.
+
+Hackathon rules require that all coding and building happen during hacking hours (5 p.m. Friday to 5 p.m. Saturday).
