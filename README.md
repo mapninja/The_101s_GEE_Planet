@@ -2,7 +2,7 @@
 
 A hands-on introduction to two satellite data platforms, Google Earth Engine and Planet, for complete beginners. Presented by the Stanford Geospatial Center.
 
-- **Repo:** https://github.com/StanfordGeospatialCenter/The_101s_GEE_Planet
+- **Repo:** https://github.com/mapninja/The_101s_GEE_Planet
 - **Slides:** [The 101s: Intro to Spatial Data](https://slides.com/staceymaples/the-101s-intro-to-spatial-data)
 
 ## Quick links
@@ -10,10 +10,9 @@ A hands-on introduction to two satellite data platforms, Google Earth Engine and
 | What | Link |
 | --- | --- |
 | Intro slides | [slides.com/staceymaples/the-101s-intro-to-spatial-data](https://slides.com/staceymaples/the-101s-intro-to-spatial-data) |
-| Workshop slides (Google Slides) | [Open the deck](https://docs.google.com/presentation/d/1SOoPxez884xFi6vNH6tienumAsxPlwltdWYdiuRAiw0/edit?slide=id.g364016eefd3_0_5233#slide=id.g364016eefd3_0_5233) |
 | Earth Engine Code Editor | https://code.earthengine.google.com/ |
-| Earth Engine notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/StanfordGeospatialCenter/The_101s_GEE_Planet/blob/main/notebooks/01_largest_fire_today_workflow.ipynb) |
-| Planet notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/StanfordGeospatialCenter/The_101s_GEE_Planet/blob/main/notebooks/02_planet_API_101_LakeLagunita.ipynb) |
+| Earth Engine notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mapninja/The_101s_GEE_Planet/blob/main/notebooks/01_largest_fire_today_workflow.ipynb) |
+| Planet notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mapninja/The_101s_GEE_Planet/blob/main/notebooks/02_planet_API_101_LakeLagunita.ipynb) |
 
 ## Read this first: access
 
@@ -35,11 +34,11 @@ Stanford users can also request Earth Engine help at stanford-geospatial@stanfor
 5. [More resources](#more-resources)
 6. [Repo contents](#repo-contents)
 7. [Appendix: Stanford Cleantech Hackathon](#appendix-stanford-cleantech-hackathon)
+8. [Appendix: AlphaEarth slides](#appendix-alphaearth-slides)
 
 ## Slides
 
 - [The 101s: Intro to Spatial Data](https://slides.com/staceymaples/the-101s-intro-to-spatial-data): introduction to spatial data, the starting point for this workshop.
-- [Workshop slides (Google Slides)](https://docs.google.com/presentation/d/1SOoPxez884xFi6vNH6tienumAsxPlwltdWYdiuRAiw0/edit?slide=id.g364016eefd3_0_5233#slide=id.g364016eefd3_0_5233)
 - Related decks: [Remote Sensing with Earth Engine](https://slides.com/staceymaples/rswithgee) and [Planet at Stanford](https://slides.com/staceymaples/planet-stanford-lovedataweek).
 
 ## Part 1: Google Earth Engine
@@ -139,6 +138,8 @@ Use a sample to get familiar with the Code Editor window:
 
 These samples use the Code Editor's JavaScript API. The Python notebook below is a separate workflow.
 
+To find more data to load in the Code Editor, browse the [Awesome GEE Community Catalog](https://gee-community-catalog.org/). It lists community-contributed datasets that are ready to use in Earth Engine and are not in the official Data Catalog.
+
 ### Switch to the Python API
 
 Once you have explored a Code Editor sample, continue with the [Python notebook below](#notebook-largest-active-fire-today). The notebook uses Python and runs in Google Colab or local Jupyter; it is separate from the Code Editor.
@@ -159,7 +160,7 @@ Once you have explored a Code Editor sample, continue with the [Python notebook 
 
 ### Notebook: Largest active fire today
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/StanfordGeospatialCenter/The_101s_GEE_Planet/blob/main/notebooks/01_largest_fire_today_workflow.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mapninja/The_101s_GEE_Planet/blob/main/notebooks/01_largest_fire_today_workflow.ipynb)
 
 File: [`notebooks/01_largest_fire_today_workflow.ipynb`](notebooks/01_largest_fire_today_workflow.ipynb)
 
@@ -208,7 +209,7 @@ To make an AOI for your own area, use https://geojson.io/.
 
 ### Notebook: Planet API 101, Lake Lagunita
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/StanfordGeospatialCenter/The_101s_GEE_Planet/blob/main/notebooks/02_planet_API_101_LakeLagunita.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mapninja/The_101s_GEE_Planet/blob/main/notebooks/02_planet_API_101_LakeLagunita.ipynb)
 
 File: [`notebooks/02_planet_API_101_LakeLagunita.ipynb`](notebooks/02_planet_API_101_LakeLagunita.ipynb)
 
@@ -228,6 +229,7 @@ Satellite embeddings summarize each location's imagery over a year as a vector o
 
 - **Paper:** [AlphaEarth Foundations: An embedding field model for accurate and efficient global mapping from sparse label data](https://arxiv.org/abs/2507.22291) (arXiv:2507.22291).
 - **Demo app:** [Embedding similarity search](https://earthengine-ai.projects.earthengine.app/view/embedding-similarity-search#year=2025;zoom=13;lon=73.24504611835016;lat=19.206247673935145;clicked=true;). Click a location on the map to find places with similar embeddings.
+- **Related model:** [OlmoEarth v1.3](https://allenai.org/blog/olmoearth-v1-3) from Ai2 is another satellite embedding model. It uses a year of Sentinel-1, Sentinel-2, and Landsat data to produce a 128-dimension vector for each 10 m pixel. Ai2 publishes annual global embeddings for 2023 to 2025, open model weights, and a browser-based Embeddings Explorer for similarity search and small classifiers. Ai2 reports that it outperforms AlphaEarth Foundations on most of its 27 evaluations. See the post for access links and license terms.
 
 ## More resources
 
@@ -258,6 +260,7 @@ The_101s_GEE_Planet/
 - Earth Engine notebook: set `project` to your own Google Cloud Project ID before you run it.
 - PlanetScope data requires a Planet account with data access. PlanetScope has no SWIR bands, so true NBR needs Sentinel-2 or Landsat.
 - Notebooks in this repo are saved with outputs cleared.
+- Output files: in Colab, both notebooks mount your Google Drive and save files to a `GEE101` folder (`/content/drive/MyDrive/GEE101`), which they create if needed. Colab asks you to allow Drive access. In local Jupyter, files go to an `output` folder next to the notebook.
 
 ## Appendix: Stanford Cleantech Hackathon
 
@@ -278,16 +281,16 @@ This workshop runs as the Google Earth Engine 101 session at the third annual St
 
 - **Planet, Stanford affiliates:** [sign-up form](https://forms.gle/oTMeMi4zTqcD4U9n8). Daily, 4 m, multispectral imagery. Non-Stanford EDU users apply at the [Planet education and research page](https://www.planet.com/industries/education-and-research/).
 - **Earth Engine Data Catalog:** https://developers.google.com/earth-engine/datasets/
+- **Awesome GEE Community Catalog:** https://gee-community-catalog.org/. Community-contributed datasets that are ready to use in Earth Engine.
+- **EarthWorks (Stanford Libraries):** https://earthworks.stanford.edu/. Search for geospatial datasets and scanned or georeferenced maps.
 - **AirNow API:** air quality data. [AirNow](https://www.airnow.gov/) and [API docs](https://docs.airnowapi.org/).
 - **Natural Capital Project Data Hub:** https://data.naturalcapitalproject.stanford.edu/
 - **Global Forest Watch:** https://www.globalforestwatch.org/
 - **Climate Tech Atlas:** https://climatetechatlas.com/
 
-### Tracks where this workshop applies
 
-Satellite and climate data fit these track prompts:
+## Appendix: AlphaEarth slides
 
-- **Climate and Health:** AI route planning for dengue surveillance, which starts from predicted mosquito breeding sites. Heat action plan audit.
-- **Resilient Systems:** predictive power outage and reliability mapping, which combines outage records, weather, and infrastructure data.
+- [AlphaEarth slides (Google Slides)](https://docs.google.com/presentation/d/1SOoPxez884xFi6vNH6tienumAsxPlwltdWYdiuRAiw0/edit?slide=id.g364016eefd3_0_5233#slide=id.g364016eefd3_0_5233)
 
-Hackathon rules require that all coding and building happen during hacking hours (5 p.m. Friday to 5 p.m. Saturday).
+AlphaEarth Foundations is Google DeepMind's satellite embedding model. Earth Engine hosts its annual embeddings as a dataset, so you can use them like any other image collection. For background, the paper, and a demo app, see [Part 3](#part-3-embeddings-and-alphaearth).
