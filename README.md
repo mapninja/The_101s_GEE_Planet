@@ -3,7 +3,7 @@
 
 A hands-on introduction to two satellite data platforms, Google Earth Engine and Planet, for complete beginners. Presented by the Stanford Geospatial Center.
 
-- **Short link:** https://www.stanford.edu/hack-gee101
+- **Short link:** https://goto.stanford.edu/hack-gee101
 - **Repo:** https://github.com/mapninja/The_101s_GEE_Planet
 - **Slides:** [The 101s: Intro to Spatial Data](https://slides.com/staceymaples/the-101s-intro-to-spatial-data)
 
