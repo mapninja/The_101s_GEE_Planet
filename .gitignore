@@ -18,3 +18,4 @@ notebooks/*/PSScene/
 output/
 lake_lagunita_cloud_*/
 *.tif
+HANDOFF.md
