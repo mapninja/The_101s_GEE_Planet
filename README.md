@@ -297,6 +297,27 @@ This workshop runs as the Google Earth Engine 101 session at the third annual St
 - **Global Forest Watch:** https://www.globalforestwatch.org/
 - **Climate Tech Atlas:** https://climatetechatlas.com/
 
+### Disaster imagery: high-resolution multispectral
+
+Two programs release high-resolution multispectral imagery for major disasters. Both are licensed CC BY-NC (non-commercial use only). Confirm license terms on each site before you build on the data.
+
+**Vantor** (formerly Maxar, renamed in October 2025)
+
+- [Vantor Open Data Program](https://vantor.com/company/open-data-program/): pre- and post-event imagery for activated disasters. Its WorldView satellites collect multispectral bands (WorldView-3: 31 cm panchromatic, 1.24 m multispectral).
+- [Vantor Open Data on AWS](https://registry.opendata.aws/vantor-open-data/): the S3 bucket and STAC catalog. Imagery streams as Cloud Optimized GeoTIFFs (COGs). Check an item's band layout before you build on it.
+- [Activation protocol](https://vantor.com/resources/vantor-open-data-program-activation-protocol/): how and when an event gets activated.
+- [Vantor QGIS plugin](https://plugins.qgis.org/plugins/vantor/): search and stream the STAC catalog in QGIS.
+- [Walkthrough: QGIS and MapLibre](https://gishub.org/blog/vantor-satellite-imagery/) and [Earthscale tutorial](https://docs.earthscale.ai/tutorials/access-vantor-maxar-open-data).
+
+**Planet**
+
+- [Planet Disaster Data](https://www.planet.com/disasterdata/): imagery for earthquakes, floods, storms, wildfires, and human-made disasters. Access is limited to people tied to NGOs, governments, and international organizations assisting response.
+- [Planet releases on Source Cooperative](https://source.coop/planet/disasterdata): a STAC catalog with one sub-catalog per event and a GeoParquet scene index per collection. COG assets stream without an API key.
+- [Example: Nepal flash flood, August 2026](https://source.coop/planet/disasterdata/nepal-flash-flood-2026-08-26): resolution runs from about 0.55 m (Pelican) to 3.9 m (PlanetScope). Pre-event scenes are surface reflectance and post-event PlanetScope scenes are top-of-atmosphere radiance, so do not difference them without atmospheric correction. PlanetScope and Pelican use the `udm2` mask. SkySat uses the older `udm`.
+
+**In Earth Engine**
+
+- [SkySat Public Ortho, Multispectral](https://developers.google.com/earth-engine/datasets/catalog/SKYSAT_GEN-A_PUBLIC_ORTHO_MULTISPECTRAL): four 2 m bands plus a 0.8 m panchromatic band. This is an older public dataset, not disaster-specific.
 
 ## Appendix: AlphaEarth slides
 
