@@ -37,6 +37,7 @@ Stanford users can also request Earth Engine help at stanford-geospatial@stanfor
 6. [Repo contents](#repo-contents)
 7. [Appendix: Stanford Cleantech Hackathon](#appendix-stanford-cleantech-hackathon)
 8. [Appendix: AlphaEarth slides](#appendix-alphaearth-slides)
+9. [Appendix: XYZ tiles from Earth Engine](#appendix-xyz-tiles-from-earth-engine)
 
 ## Slides
 
@@ -329,3 +330,99 @@ Two programs release high-resolution multispectral imagery for major disasters. 
 - [Satellite Embedding V1 in the Earth Engine Data Catalog](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL): the annual embedding dataset.
 
 AlphaEarth Foundations is Google DeepMind's satellite embedding model. Earth Engine hosts its annual embeddings as a dataset, so you can use them like any other image collection. For more background, see [Part 3](#part-3-embeddings-and-alphaearth).
+
+## Appendix: XYZ tiles from Earth Engine
+
+Earth Engine can serve any image as XYZ map tiles. Each tile is a 256 by 256 pixel RGB image at a fixed location and zoom level. That makes tiles a quick way to pull RGB images from Earth Engine and pass them through a model, with no export, Drive folder, or download step.
+
+### What XYZ tiles are
+
+- The world is cut into square tiles in the Web Mercator projection (EPSG:3857).
+- Each tile has three numbers: `z` (zoom level), `x` (column), and `y` (row).
+- At `z=0` one tile covers the whole world. Each zoom level splits every tile into four, so zoom `z` has 4^z tiles.
+- Tile `0/0/0` is the whole world in one image.
+- Overview: [Understanding map zoom levels and XYZ tile coordinates](https://dev.to/geoapify-maps-api/understanding-map-zoom-levels-and-xyz-tile-coordinates-55da).
+
+Ground size of one pixel at the equator (multiply by the cosine of the latitude for other places):
+
+| Zoom | Meters per pixel |
+| --- | --- |
+| 10 | 153 |
+| 12 | 38 |
+| 14 | 9.6 |
+| 16 | 2.4 |
+
+Pick a zoom close to your source data. Sentinel-2 has 10 m pixels, so zoom 14 matches it. Higher zooms enlarge the same pixels and add no detail.
+
+### The tile URL
+
+Earth Engine returns a URL template. Replace `{z}`, `{x}`, and `{y}` to request one tile:
+
+```
+https://earthengine.googleapis.com/v1/projects/YOUR_PROJECT_ID/maps/MAP_ID/tiles/{z}/{x}/{y}
+```
+
+- The map ID is tied to your project and the image and visualization you passed. It is temporary, so generate a new one when it stops working.
+- Do not commit map IDs to a public repo.
+- Example script that creates a map ID in the Code Editor: [XYZ tiles script](https://code.earthengine.google.com/7ebe430bc68fda653043e4cf4b2f1434). It needs an Earth Engine login.
+
+### Get tiles in Python
+
+The tile is already an 8-bit RGB image, so call `visualize` (or pass `vis_params`) first. Models expect RGB, not raw reflectance.
+
+```python
+# Install the helpers once in Colab: !pip install mercantile pillow requests
+import io
+import ee
+import mercantile            # converts longitude/latitude and zoom into x/y tile numbers
+import requests              # downloads a tile over HTTP
+import numpy as np
+from PIL import Image        # opens the downloaded PNG
+
+# Connect to Earth Engine with your own Google Cloud Project ID.
+ee.Initialize(project='YOUR_PROJECT_ID')
+
+# Step 1: pick a place and build an image. Here, a Sentinel-2 median for one year.
+point = ee.Geometry.Point([-122.1697, 37.4275])  # longitude, latitude
+image = (
+    ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+    .filterBounds(point)
+    .filterDate('2025-06-01', '2025-09-30')
+    .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))  # skip cloudy scenes
+    .median()
+)
+
+# Step 2: choose bands and a stretch. B4, B3, B2 are red, green, blue.
+# min and max set the reflectance range that maps to black and white.
+vis_params = {'bands': ['B4', 'B3', 'B2'], 'min': 0, 'max': 3000}
+
+# Step 3: ask Earth Engine for a map ID. The URL template has {z}, {x}, {y} slots.
+map_info = image.getMapId(vis_params)
+url_template = map_info['tile_fetcher'].url_format
+
+# Step 4: find the tile that covers a longitude/latitude at your zoom level.
+zoom = 14
+tile = mercantile.tile(-122.1697, 37.4275, zoom)  # returns x, y, z
+
+# Step 5: download that tile and open it as an RGB image.
+url = url_template.format(x=tile.x, y=tile.y, z=tile.z)
+response = requests.get(url)
+response.raise_for_status()                       # stop with a clear error if the request failed
+rgb = Image.open(io.BytesIO(response.content)).convert('RGB')
+
+# Step 6: turn the image into a NumPy array. Shape is (256, 256, 3).
+array = np.array(rgb)
+print(array.shape)
+
+# Pass `rgb` or `array` to your model here, for example:
+# prediction = model(array)
+```
+
+To cover a larger area, loop over `mercantile.tiles(west, south, east, north, zoom)`. It yields every tile that intersects a bounding box.
+
+### Notes
+
+- Tiles are for visual products. For measurements such as NDVI values or reflectance, use `ee.Image.sampleRectangle`, `reduceRegion`, or an export, not a stretched RGB tile.
+- Tile requests count against Earth Engine usage limits. Request only the tiles you need.
+- If a request returns 401 or 403, create a new map ID.
+- Keep the zoom level, bands, and stretch the same for training and prediction. Changing them changes what the model sees.
